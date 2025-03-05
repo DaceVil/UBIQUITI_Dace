@@ -27,11 +27,8 @@ test('verify header and footer', async ({ page }) => {
     expect(copyrights.trim()).toBe('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy');
 
     //header logo
-
     await expect(page.locator('.header_label')).toHaveText('Swag Labs');
-
     await expect(page.locator("//button[@id='react-burger-menu-btn']")).toBeVisible();
-
     await expect(page.locator("//*[@id='shopping_cart_container']")).toBeVisible();
     // hastitle 'Products'
     const title = page.locator("//div[@id='header_container']/div[2]/span");
