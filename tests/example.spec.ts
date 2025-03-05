@@ -65,7 +65,6 @@ test('Login locked_out_user as first - should not be able to log in, standard_us
     //press login button
     await page.locator("//input[@id='login-button']").click();
 
-
     //sort by low to high
     const dropdownSelector = '.product_sort_container';
 
@@ -97,16 +96,13 @@ test('Login locked_out_user as first - should not be able to log in, standard_us
 
     //sort on A to Z
     const dropdownSelectorAZ = '.product_sort_container';
-
     await page.waitForSelector(dropdownSelectorAZ, { state: 'visible' });
-    // Choose the option by value or label (depending on what the dropdown is using)
     await page.selectOption(dropdownSelectorAZ, { value: 'az' });
 
     //  await page.getByText('Sauce Labs Bike Light'); 
     //last item should be Sauce Labs Bike Light
 
     const topRightProduct = await page.locator("//a[@id='item_0_title_link']");
-    // const topRightProduct = await page.locator('.inventory_item_list :nth-child(2)');
     const topRightProductText = await topRightProduct.textContent();
 
     // Compare the actual text of the first product to the expected string
