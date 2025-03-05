@@ -1,0 +1,27 @@
+{
+  "name": "ubiquiti_dace",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaceVil/UBIQUITI_Dace.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DaceVil/UBIQUITI_Dace/issues"
+  },
+  "homepage": "https://github.com/DaceVil/UBIQUITI_Dace#readme",
+  "description": "",
+  "dependencies": {
+    "@playwright/test": "^1.50.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "playwright": "^1.50.1"
+  }
+}
