@@ -10,23 +10,6 @@ test('verify header and footer', async ({ page }) => {
     await page.locator("//input[@id='login-button']").click();
     // header contains logo, menu bar, shopping cart
 
-    //footer
-    await expect(page.locator("//*[@id='page_wrapper']/footer/ul")).toBeVisible();
-
-    const footerSocialTwitter = await page.locator("//*[@id='page_wrapper']/footer/ul/li[1]/a").textContent();
-    expect(footerSocialTwitter).toBe('Twitter');
-
-    const footerSocialFacebook = await page.locator("//*[@id='page_wrapper']/footer/ul/li[2]/a").textContent();
-    expect(footerSocialFacebook).toBe('Facebook');
-
-    const footerSocialLinkedIn = await page.locator("//*[@id='page_wrapper']/footer/ul/li[3]/a").textContent();
-    expect(footerSocialLinkedIn).toBe('LinkedIn');
-
-    //copyrights
-    const copyrights = await page.locator('.footer_copy').textContent();
-    expect(copyrights.trim()).toBe('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy');
-
-    //header logo
     await expect(page.locator('.header_label')).toHaveText('Swag Labs');
     await expect(page.locator("//button[@id='react-burger-menu-btn']")).toBeVisible();
     await expect(page.locator("//*[@id='shopping_cart_container']")).toBeVisible();
@@ -38,9 +21,29 @@ test('verify header and footer', async ({ page }) => {
     const filter = page.locator("//*[@id='header_container']/div[2]/div/span/select/option");
     await expect(filter).toHaveCount(4);
 
-});
+    //footer
 
-test('Login locked_out_user as first - should not be able to log in, standard_user able to log in', async ({ page }) => {
+
+    await expect(page.locator("//*[@id='page_wrapper']/footer/ul")).toBeVisible();
+
+    //copyrights
+    const copyrights = await page.locator('.footer_copy').textContent();
+    expect(copyrights.trim()).toBe('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy');
+
+    const footerSocialTwitter = await page.locator("//*[@id='page_wrapper']/footer/ul/li[1]/a").textContent();
+    expect(footerSocialTwitter).toBe('Twitter');
+
+    const footerSocialFacebook = await page.locator("//*[@id='page_wrapper']/footer/ul/li[2]/a").textContent();
+    expect(footerSocialFacebook).toBe('Facebook');
+
+    const footerSocialLinkedIn = await page.locator("//*[@id='page_wrapper']/footer/ul/li[3]/a").textContent();
+    expect(footerSocialLinkedIn).toBe('LinkedIn');
+    //click on one of items - Twitter
+
+    await page.locator("//*[@id='page_wrapper']/footer/ul/li[1]").click();
+ });
+
+test('Login, sorting, cart, ordering', async ({ page }) => {
     await page.goto('https://www.saucedemo.com/');
     //input[@id='user-name']
     await page.locator("//input[@id='user-name']").type('locked_out_user');
