@@ -163,5 +163,5 @@ test('Additional tests', async ({ page }) => {
     const cartBadgeeEmpty = await page.locator('.shopping_cart_container');
     const cartItemCountEmpty = await cartBadge.textContent();
     expect(cartItemCountEmpty).toBe('');
-
+    
 });
