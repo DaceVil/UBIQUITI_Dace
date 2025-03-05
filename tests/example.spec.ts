@@ -43,7 +43,6 @@ test('verify header and footer', async ({ page }) => {
 
 });
 
-
 test('Login locked_out_user as first - should not be able to log in, standard_user able to log in', async ({ page }) => {
     await page.goto('https://www.saucedemo.com/');
     //input[@id='user-name']
@@ -69,8 +68,8 @@ test('Login locked_out_user as first - should not be able to log in, standard_us
     const dropdownSelector = '.product_sort_container';
 
     await page.waitForSelector(dropdownSelector, { state: 'visible' });
-    // Choose the option by value or label (depending on what the dropdown is using)
-    await page.selectOption(dropdownSelector, { value: 'lohi' }); // Use the label, value, or index
+    // sort by price from low to high
+    await page.selectOption(dropdownSelector, { value: 'lohi' }); 
 
     //last item should be Sauce Labs Fleece Jacket
     const lastProduct = await page.locator('.inventory_item_name').last();
@@ -107,7 +106,6 @@ test('Login locked_out_user as first - should not be able to log in, standard_us
 
     // Compare the actual text of the first product to the expected string
     await expect(topRightProductText.trim()).toBe('Sauce Labs Bike Light');
-
 
     await page.locator("//div[@id='inventory_container']");
     await page.locator("//button[@id='add-to-cart-sauce-labs-bike-light']").click();
