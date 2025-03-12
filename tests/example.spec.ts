@@ -97,19 +97,15 @@ test('Login, sorting, cart, ordering', async ({ page }) => {
     const dropdownSelectorAZ = '.product_sort_container';
     await page.waitForSelector(dropdownSelectorAZ, { state: 'visible' });
     await page.selectOption(dropdownSelectorAZ, { value: 'az' });
-
-    //  await page.getByText('Sauce Labs Bike Light'); 
-    //last item should be Sauce Labs Bike Light
-
+    //take top right item 
     const topRightProduct = await page.locator("//a[@id='item_0_title_link']");
     const topRightProductText = await topRightProduct.textContent();
-
-    // Compare the actual text of the first product to the expected string
+    // compare the actual text of the first product to the expected string
     await expect(topRightProductText.trim()).toBe('Sauce Labs Bike Light');
 
     await page.locator("//div[@id='inventory_container']");
     await page.locator("//button[@id='add-to-cart-sauce-labs-bike-light']").click();
-    // Get the text content of the first product
+    // get the text content of the first product
     const cartBadge2 = await page.locator('.shopping_cart_container');
     const cartItemCount2 = await cartBadge.textContent();
     expect(cartItemCount2).toBe('2');
