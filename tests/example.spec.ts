@@ -41,6 +41,7 @@ test('verify header and footer', async ({ page }) => {
     //click on one of items - Twitter
 
     await page.locator("//*[@id='page_wrapper']/footer/ul/li[1]").click();
+    //await expect(page).toHaveURL(/.x.com/)
  });
 
 test('Login, sorting, cart, ordering', async ({ page }) => {
@@ -101,7 +102,7 @@ test('Login, sorting, cart, ordering', async ({ page }) => {
     const topRightProduct = await page.locator("//a[@id='item_0_title_link']");
     const topRightProductText = await topRightProduct.textContent();
     // compare the actual text of the first product to the expected string
-    await expect(topRightProductText.trim()).toBe('Sauce Labs Bike Light');
+    expect(topRightProductText.trim()).toBe('Sauce Labs Bike Light');
 
     await page.locator("//div[@id='inventory_container']");
     await page.locator("//button[@id='add-to-cart-sauce-labs-bike-light']").click();
